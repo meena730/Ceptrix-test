@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Swiper Demo</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: sans-serif;
+        background-color: #f4fbff;
+        width: 100%;
+        min-height: 100vh;
+      }
+
+      .slider-container {
+        padding: 2rem 1rem;
+        text-align: center;
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      .swiper {
+        width: 100%;
+        padding-bottom: 2rem;
+      }
+
+      .swiper-wrapper {
+        display: flex;
+      }
+
+      .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .card {
+        background: white;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        max-width: 300px;
+        width: 100%;
+        margin: 1rem auto;
+        text-align: left;
+      }
+
+      .card-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .card h2 {
+        color: #00a1e0;
+        font-size: 2rem;
+        margin: 0;
+      }
+
+      .card p {
+        margin-top: 1rem;
+        font-size: 1.3rem;
+      }
+
+      .card img {
+        width: 24px;
+        height: 24px;
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .btn-primary {
+        background: #00a1e0;
+        color: white;
+        border: none;
+        padding: 1rem 1.5rem;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .btn-outline {
+        background: transparent;
+        border: 1px solid #00a1e0;
+        color: #00a1e0;
+        padding: 0.75rem 1.5rem;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .swiper-pagination {
+        margin-top: 1rem;
+      }
+
+      .swiper-button-next,
+      .swiper-button-prev {
+        color: #00a1e0;
+        font-size: 10px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="slider-container">
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <!-- Slide 1 -->
+          <div class="swiper-slide">
+            <div class="card">
+              <div class="card-top">
+                <h2>80<sub>%</sub></h2>
+                <img src="./Trend.svg" alt="trend icon" />
+              </div>
+              <p>Reduction in reporting <br> time</p>
+            </div>
+          </div>
+          <!-- Slide 2 -->
+          <div class="swiper-slide">
+            <div class="card">
+              <div class="card-top">
+                <h2>85<sub>%</sub></h2>
+                <img src="./Trend.svg" alt="trend icon" />
+              </div>
+              <p>Reduction in monthly <br> close times</p>
+            </div>
+          </div>
+          <!-- Slide 3 -->
+          <div class="swiper-slide">
+            <div class="card">
+              <div class="card-top">
+                <h2>50<sub>%</sub></h2>
+                <img src="./Trend.svg" alt="trend icon" />
+              </div>
+              <p>Less time spent <br> budgeting</p>
+            </div>
+          </div>
+         
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="buttons">
+        <button class="btn-primary">GET INSTANT DEMO</button>
+        <button class="btn-outline">GET PRICING AND PROMOS</button>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      const swiper = new Swiper(".mySwiper", {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    </script>
+  </body>
+</html>

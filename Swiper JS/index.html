@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swiper Carousel</title>
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            background: #000;
+        }
+        
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .swiper-slide {
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 200px;
+        }
+        
+        .swiper-slide::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+        }
+        
+        .swiper-slide h2 {
+            color: white;
+            font-size: 4vw;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .swiper-slide-active h2 {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: white;
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+        }
+        
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .swiper-pagination-bullet {
+            width: 12px;
+            height: 12px;
+            background: transparent;
+            border: 2px solid white;
+            opacity: 1;
+            margin: 300px;
+        }
+        
+        .swiper-pagination-bullet-active {
+            background: white;
+            
+        }
+      
+    .carousel-container {
+        /* max-width: 1200px; */
+        margin: 0 auto;
+        padding: 40px 20px;
+    }
+    
+    .carousel-header {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #fff;
+    animation: fadeInDown 1s ease-out;
+}
+
+.carousel-header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: #ecf0f1;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+.header-divider {
+    width: 120px;
+    height: 4px;
+    background: linear-gradient(to right, #3498db, #9b59b6);
+    margin: 0 auto;
+    border-radius: 4px;
+}
+
+/* Optional fade-in animation */
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: traxnslateY(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+    
+    .slide-description {
+        color: white;
+        font-size: 1.2rem;
+        margin-top: 15px;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.5s ease 0.2s;
+        position: relative;
+        z-index: 1;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+    
+    .swiper-slide-active .slide-description {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .swiper-pagination{
+        margin-top: 200px;
+    }
+
+    </style>
+</head>
+<body>
+    <!-- Swiper container -->
+    <div class="carousel-container">
+        <!-- Heading Section -->
+        <div class="carousel-header">
+            <h1>Beautiful Nature Gallery</h1>
+            <p class="subtitle">Explore stunning landscapes from around the world</p>
+            <div class="header-divider"></div>
+        </div>
+    
+        <!-- Swiper Carousel -->
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <!-- Slides -->
+                <div class="swiper-slide">
+                    <h2>Mountain Sunrise</h2>
+                    <p class="slide-description">Experience the breathtaking beauty of dawn over the peaks</p>
+                </div>
+                <div class="swiper-slide" style="background-image: url(https://source.unsplash.com/random/1600x900?nature=2)">
+                    <h2>Forest Wonderland</h2>
+                    <p class="slide-description">Discover the magical tranquility of ancient woodlands</p>
+                </div>
+                <div class="swiper-slide" style="background-image: url(https://source.unsplash.com/random/1600x900?nature=3)">
+                    <h2>Ocean Horizon</h2>
+                    <p class="slide-description">Where the sea meets the sky in endless blue</p>
+                </div>
+                <div class="swiper-slide" style="background-image: url(https://source.unsplash.com/random/1600x900?nature=4)">
+                    <h2>Desert Mirage</h2>
+                    <p class="slide-description">The golden sands that stretch beyond imagination</p>
+                </div>
+            </div>
+            
+            <!-- Navigation buttons -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            
+            <!-- Pagination -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper('.swiper', {
+            loop: true,
+            effect: 'fade',
+            speed: 1000,
+            
+            // Autoplay
+            autoplay: {
+                delay: 6000,
+                disableOnInteraction: false,
+            },
+            
+            // Pagination
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+             
+        // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    </script>
+</body>
+</html>

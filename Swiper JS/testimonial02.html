@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Testimonial Slides</title>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+  />
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: "Arial", sans-serif;
+      background-color:#F1B519;
+      margin: 0;
+    }
+
+    .swiper {
+      width: 90%;
+      max-width: 800px;
+      padding: 40px 0;
+    }
+
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    .card {
+      text-align: center;
+      background-color: #ffffff;
+      padding: 20px;
+      /* width: 300px; */
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 400px;
+      margin-top: 50px;
+
+    }
+
+    .profile-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    .quote {
+      color: #444;
+      font-size: 20px;
+      margin: 0 0 12px;
+      line-height: 1.4;
+    }
+
+    .name {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .title {
+      font-size: 16px;
+      color: gray;
+      margin-top: 4px;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: white;
+      background: rgba(0, 0, 0, 0.5);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;   
+      transition: all 0.3s ease;
+    }
+
+    .swiper-button-next:hover,
+    .swiper-button-prev:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .swiper-pagination-bullet {
+      background: white;
+      opacity: 0.7;
+      width: 12px;
+      height: 12px;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: #ff5722;
+      opacity: 1;
+    }
+    .comma{
+        position: absolute;
+    }
+  </style>
+</head>
+<body>
+    <div><img class="comma" src="./fontisto_quote-left.svg" alt="">
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="card">
+          <img src="./testimonial.png" alt="Profile" class="profile-img" />
+          <p class="quote">The gradual accumulation<br>of information about atomic and<br>small scale...</p>
+          <h3 class="name">Anette Black</h3>
+          <p class="title">Director, Producer</p>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="card">
+          <img src="https://imgs.search.brave.com/AwyOioX2edbVhYAI4TYsBG6kzq-7TKDDlFu5i9IJmt4/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTM5/ODM4NTM5Mi9waG90/by9oYXBweS15b3Vu/Zy1taWxsZW5uaWFs/LWluZGlhbi1idXNp/bmVzcy13b21hbi1o/ZWFkLXNob3QtcG9y/dHJhaXQuanBnP3M9/NjEyeDYxMiZ3PTAm/az0yMCZjPVFTUldE/NEtJN0pDUkpHZE1L/QWhmVUJ2M0ZjMnYt/N052dTA0aVJNQVBo/R1U9" alt="Profile" class="profile-img" />
+          <p class="quote">The gradual accumulation<br>of information about atomic and<br>small scale...</p>
+          <h3 class="name">Anette Black</h3>
+          <p class="title">Director, Producer</p>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="card">
+          <img src="./testimonial.png" alt="Profile" class="profile-img" />
+          <p class="quote">The gradual accumulation<br>of information about atomic and<br>small scale...</p>
+          <h3 class="name">Anette Black</h3>
+          <p class="title">Director, Producer</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      new Swiper(".swiper", {
+        loop: true,
+        speed: 800,
+        grabCursor: true,
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+          640: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 1,
+            spaceBetween: 30,
+          },
+        },
+      });
+    });
+  </script>
+</body>
+</html>  
