@@ -1,0 +1,35 @@
+Local Storage is a small space inside your browser where websites can store information about you — and that data stays saved, even after you close the tab or shut down your computer.
+
+📝 Why is it useful?
+Because it helps websites:
+
+Remember you even after refreshing or closing the browser
+
+Save your choices (like language or theme)
+
+Store temporary data (like form inputs, tokens, or login info)
+
+🧪 Simple Example:
+Let’s say a website wants to remember your name:
+
+localStorage.setItem('name', 'Meena');                           // Save the name
+Later, it can get your name like this:
+
+const name = localStorage.getItem('name');                                  // Get the name
+console.log(name); // → Meena
+And to delete it:
+
+localStorage.removeItem('name');
+📌 Things to Know:
+Local Storage saves data in your browser only
+
+It doesn’t get deleted automatically (until you delete it)
+
+It only stores text (not numbers, objects, or images directly)
+
+It’s useful for small data (limit is around 5MB)
+
+📦 Real-life Example:
+You're shopping online, and you close the tab.
+Next time you open it — your cart is still there.
+That’s because the website used localStorage to remember your cart items.

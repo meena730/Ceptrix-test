@@ -1,0 +1,46 @@
+🧠 What is Session Storage?
+sessionStorage is like a temporary locker inside your browser.
+
+It stores data only while the tab is open.
+
+As soon as you close the tab or browser, the data is gone.
+
+📝 Why Use Session Storage?
+It’s useful when you want to:
+
+Store data just for one visit
+
+Keep data while navigating between pages in the same tab
+
+Not save anything after the tab is closed
+
+🧪 Simple Example:
+// Save a value
+sessionStorage.setItem('username', 'Meena');
+
+                                   // Get the value
+const user = sessionStorage.getItem('username');
+console.log(user);  // Output: Meena
+
+                                   // Remove the value
+sessionStorage.removeItem('username');
+
+                               // Clear all session storage
+sessionStorage.clear();
+📌 Key Points:
+Feature	          |  sessionStorage
+Lifetime	      |  Until tab is closed
+Data persists?    |	❌ No, removed after closing tab
+Access scope	  |  Only in the same tab & same browser
+Syntax	          |  Same as localStorage
+
+💡 Real-life Example:
+Imagine you're filling a multi-step form on a site (like a job application),
+and you go back and forth between pages in the same tab.
+
+✅ sessionStorage can help store your form data temporarily during that visit.
+❌ But if you close the tab, all data is lost.
+
+🧠 Tip:
+If you want the data to stay even after closing the browser → use localStorage
+If you want the data to disappear when tab is closed → use sessionStorage
