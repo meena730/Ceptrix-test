@@ -1,22 +1,26 @@
 document.getElementById("loginForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
-  const username = document.getElementById("username").value.trim();
-  const password = document.getElementById("password").value.trim();
+  const username = document.getElementById("username");
+  const password = document.getElementById("password");
   const usernameError = document.getElementById("username-error");
   const passwordError = document.getElementById("password-error");
 
   let isValid = true;
 
-  if (!/^[A-Za-z]+$/.test(username)) {
+  // Username validation
+  if (!/^[A-Za-z]+$/.test(username.value.trim())) {
     usernameError.textContent = "Username must contain only letters!";
+    applyErrorStyles(username);
     isValid = false;
   } else {
     usernameError.textContent = "";
   }
 
-  if (password.length !== 10) {
+  // Password validation
+  if (password.value.trim().length !== 10) {
     passwordError.textContent = "Password must be exactly 10 characters!";
+    applyErrorStyles(password);
     isValid = false;
   } else {
     passwordError.textContent = "";
@@ -27,45 +31,62 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
   }
 });
 
-// On blur validation
-document.getElementById("username").addEventListener("blur", () => {
-  const username = document.getElementById("username").value.trim();
-  document.getElementById("username-error").textContent = /^[A-Za-z]+$/.test(
-    username
-  )
-    ? ""
-    : "Username must contain only letters!";
-});
+// On blur validations for individual fields
+["username", "password"].forEach((fieldId) => {
+  const input = document.getElementById(fieldId);
+  const error = document.getElementById(`${fieldId}-error`);
 
-document.getElementById("password").addEventListener("blur", () => {
-  const password = document.getElementById("password").value.trim();
-  document.getElementById("password-error").textContent =
-    password.length === 10 ? "" : "Password must be exactly 10 characters!";
-});
-
-
-
-document.querySelectorAll("input").forEach((input) => {
   input.addEventListener("blur", () => {
-    if (input.checkValidity()) {
-      input.classList.remove("invalid");
-      input.classList.add("valid");
+    const value = input.value.trim();
+    const label = input.nextElementSibling;
+
+    // Floating label effect
+    if (value !== "") {
+      input.classList.add("filled");
     } else {
-      input.classList.remove("valid");
-      input.classList.add("invalid");
+      input.classList.remove("filled");
+    }
+
+    // Validation & styling
+    if (
+      (fieldId === "username" && !/^[A-Za-z]+$/.test(value)) ||
+      (fieldId === "password" && value.length !== 10)
+    ) {
+      error.textContent =
+        fieldId === "username"
+          ? "Username must contain only letters!"
+          : "Password must be exactly 10 characters!";
+      applyErrorStyles(input);
+    } else {
+      error.textContent = "";
+      resetStyles(input);
     }
   });
-
-  input.addEventListener("input", () => {
-    input.classList.remove("invalid");
-    input.classList.remove("valid");
-  });
 });
-  
+
+//          red border & color
+function applyErrorStyles(input) {
+  const label = input.nextElementSibling;
+  input.style.border = "2px solid red";
+  input.style.color = "red";
+  if (label) label.style.color = "red";
+}
+
+// reset styles ,(default)
+function resetStyles(input) {
+  const label = input.nextElementSibling;
+  input.style.border = "";
+  input.style.color = "";
+  if (label) label.style.color = "";
+}
 
 
 
-// color code using js 
+
+
+// show diff diff color border on diff action ,,(when uncomment this , code override css )
+
+// color code using js
 
 // const inputs = document.querySelectorAll(".input-group input");
 
