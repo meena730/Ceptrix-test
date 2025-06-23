@@ -75,7 +75,7 @@ body {
     color: red;
   }
    */
-  /* Normal state reset */
+  /* Normal state  */
   .input-group input {
     transition: all 0.2s ease;
   }

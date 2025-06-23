@@ -18,8 +18,8 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
   }
 
   // Password validation
-  if (password.value.trim().length !== 10) {
-    passwordError.textContent = "Password must be exactly 10 characters!";
+  if (password.value.trim().length < 10) {
+    passwordError.textContent = "Password must be at least 10 characters!";
     applyErrorStyles(password);
     isValid = false;
   } else {
@@ -55,7 +55,7 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
       error.textContent =
         fieldId === "username"
           ? "Username must contain only letters!"
-          : "Password must be exactly 10 characters!";
+          : "Password must be atleast 10 characters!";
       applyErrorStyles(input);
     } else {
       error.textContent = "";
@@ -113,7 +113,7 @@ function resetStyles(input) {
 //       input.style.border = "2px solid red";
 //       input.style.color = "red";
 //       label.style.color = "red";
-//     } else if (input.id === "password" && value.length < 6) {
+//     } else if (input.id === "password" && value.length < 10) {
 //       input.style.border = "2px solid red";
 //       input.style.color = "red";
 //       label.style.color = "red";
