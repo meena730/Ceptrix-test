@@ -3,110 +3,81 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
 
   const username = document.getElementById("username");
   const password = document.getElementById("password");
-  const usernameError = document.getElementById("username-error");
-  const passwordError = document.getElementById("password-error");
 
-  let isValid = true;
+  const isUsernameValid = validateField(username);
+  const isPasswordValid = validateField(password);
 
-  // Username validation
-  if (!/^[A-Za-z]+$/.test(username.value.trim())) {
-    usernameError.textContent = "Username must contain only letters!";
-    applyErrorStyles(username);
-    isValid = false;
-  } else {
-    usernameError.textContent = "";
-  }
-
-  // Password validation
-  if (password.value.trim().length < 10) {
-    passwordError.textContent = "Password must be at least 10 characters!";
-    applyErrorStyles(password);
-    isValid = false;
-  } else {
-    passwordError.textContent = "";
-  }
-
-  if (isValid) {
+  if (isUsernameValid && isPasswordValid) {
     alert("Login successful ✅");
   }
 });
 
-// On blur validations for individual fields
+// on blur
 ["username", "password"].forEach((fieldId) => {
   const input = document.getElementById(fieldId);
-  const error = document.getElementById(`${fieldId}-error`);
-
-  input.addEventListener("blur", () => {
-    const value = input.value.trim();
-    const label = input.nextElementSibling;
-
-    // Floating label effect
-    if (value !== "") {
-      input.classList.add("filled");
-    } else {
-      input.classList.remove("filled");
-    }
-
-    // Validation & styling
-    if (
-      (fieldId === "username" && !/^[A-Za-z]+$/.test(value)) ||
-      (fieldId === "password" && value.length !== 10)
-    ) {
-      error.textContent =
-        fieldId === "username"
-          ? "Username must contain only letters!"
-          : "Password must be atleast 10 characters!";
-      applyErrorStyles(input);
-    } else {
-      error.textContent = "";
-      resetStyles(input);
-    }
-  });
+  input.addEventListener("blur", () => validateField(input));
 });
 
-//          red border & color
+// Mai
+function validateField(input) {
+  const fieldId = input.id;
+  const value = input.value.trim();
+  const error = document.getElementById(`${fieldId}-error`);
+
+  // validation
+  if (
+    (fieldId === "username" && !/^[A-Za-z]+$/.test(value)) ||
+    (fieldId === "password" && value.length < 10)
+  ) {
+    error.textContent =
+      fieldId === "username"
+        ? "Username must contain only letters!"
+        : "Password must be at least 10 characters!";
+    applyErrorStyles(input);
+    return false;
+  } else {
+    error.textContent = "";
+    resetStyles(input);
+    return true;
+  }
+}
+
+// red on error
 function applyErrorStyles(input) {
-  const label = input.nextElementSibling;
+  const label = document.querySelector(`label[for="${input.id}"]`);
+  input.classList.remove("valid-input"); 
   input.style.border = "2px solid red";
   input.style.color = "red";
   if (label) label.style.color = "red";
 }
 
-// reset styles ,(default)
+// green if filled & valid)
 function resetStyles(input) {
-  const label = input.nextElementSibling;
-  input.style.border = "";
+  const label = document.querySelector(`label[for="${input.id}"]`);
+  input.classList.add("valid-input");                        // its define in css file to show green color
+  input.style.border = ""; 
   input.style.color = "";
   if (label) label.style.color = "";
 }
 
 
 
+// // show diff diff color border on diff action ,,(when uncomment this , code override css )
 
-
-// show diff diff color border on diff action ,,(when uncomment this , code override css )
-
-// color code using js
+// // color code using js
 
 // const inputs = document.querySelectorAll(".input-group input");
 
 // inputs.forEach((input) => {
 //   input.addEventListener("focus", () => {
-//     input.style.border = "2px solid green";
-//     input.style.color = "green";
-//     input.nextElementSibling.style.color = "green";
+//     input.style.border = "2px solid blue";
+//     input.style.color = "blue";
+//     input.nextElementSibling.style.color = "blue";
 //   });
 
 //   input.addEventListener("blur", () => {
 //     const value = input.value.trim();
 //     const label = input.nextElementSibling;
-
-//     // Label floating
-//     if (value !== "") {
-//       input.classList.add("filled");
-//     } else {
-//       input.classList.remove("filled");
-//     }
 
 //     // Validation logic
 //     if (input.id === "username" && !/^[A-Za-z]+$/.test(value)) {
@@ -118,9 +89,9 @@ function resetStyles(input) {
 //       input.style.color = "red";
 //       label.style.color = "red";
 //     } else {
-//       input.style.border = "2px solid #5c5cff";
-//       input.style.color = "#000";
-//       label.style.color = "#777";
+//       input.style.border = "2px solid blue";
+//       input.style.color = "#78787b;";
+//       label.style.color = "#78787b;";
 //     }
 //   });
 // });

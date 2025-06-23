@@ -33,7 +33,7 @@ body {
     padding: 14px 12px;
     max-width: 380px;
     font-size: 16px;
-    border: 2px solid #5c5cff;
+    border: 2px solid #78787b;
     border-radius: 30px;
     outline: none;
     background: white;
@@ -44,7 +44,7 @@ body {
     top: 14px;
     left: 16px;
     background: white;
-    color: #777;
+    color: #78787b;
     transition: 0.2s ease;
     padding: 0 4px;
     pointer-events: none;
@@ -55,15 +55,26 @@ body {
     top: -8px;
     left: 12px;
     font-size: 12px;
-    color: green;
+    color: rgb(60, 56, 180);
   }
   
   /* Green */
 .input-group input:focus  {
-    border: 2px solid green;
-    color: green;
+    border: 2px solid rgb(60, 56, 180);
+    color: rgb(60, 56, 180);;
 
   }
+
+  /* Green (not focused) */
+.input-group input.valid-input:not(:focus) {
+  border: 2px solid green;
+  color: green;
+}
+
+/* Optional: green label if valid & not focused */
+.input-group input.valid-input:not(:focus) + label {
+  color: green;
+}
   
   /* Red s */
   /* .input-group input.error {
@@ -75,7 +86,7 @@ body {
     color: red;
   }
    */
-  /* Normal state  */
+  /* Normal state reset */
   .input-group input {
     transition: all 0.2s ease;
   }
