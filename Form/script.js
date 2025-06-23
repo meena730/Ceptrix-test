@@ -62,36 +62,36 @@ function resetStyles(input) {
 
 
 
-// // show diff diff color border on diff action ,,(when uncomment this , code override css )
+  // // show diff diff color border on diff action ,,(when uncomment this , code override css )
 
-// // color code using js
+  // // color code using js
 
-// const inputs = document.querySelectorAll(".input-group input");
+  // const inputs = document.querySelectorAll(".input-group input");
 
-// inputs.forEach((input) => {
-//   input.addEventListener("focus", () => {
-//     input.style.border = "2px solid blue";
-//     input.style.color = "blue";
-//     input.nextElementSibling.style.color = "blue";
-//   });
+  // inputs.forEach((input) => {
+  //   input.addEventListener("focus", () => {
+  //     input.style.border = "2px solid blue";
+  //     input.style.color = "blue";
+  //     input.nextElementSibling.style.color = "blue";
+  //   });
 
-//   input.addEventListener("blur", () => {
-//     const value = input.value.trim();
-//     const label = input.nextElementSibling;
+  //   input.addEventListener("blur", () => {
+  //     const value = input.value.trim();
+  //     const label = input.nextElementSibling;
 
-//     // Validation logic
-//     if (input.id === "username" && !/^[A-Za-z]+$/.test(value)) {
-//       input.style.border = "2px solid red";
-//       input.style.color = "red";
-//       label.style.color = "red";
-//     } else if (input.id === "password" && value.length < 10) {
-//       input.style.border = "2px solid red";
-//       input.style.color = "red";
-//       label.style.color = "red";
-//     } else {
-//       input.style.border = "2px solid blue";
-//       input.style.color = "#78787b;";
-//       label.style.color = "#78787b;";
-//     }
-//   });
-// });
+  //     // Validation logic
+  //     if (input.id === "username" && !/^[A-Za-z]+$/.test(value)) {
+  //       input.style.border = "2px solid red";
+  //       input.style.color = "red";
+  //       label.style.color = "red";
+  //     } else if (input.id === "password" && value.length < 10) {
+  //       input.style.border = "2px solid red";
+  //       input.style.color = "red";
+  //       label.style.color = "red";
+  //     } else {
+  //       input.style.border = "2px solid blue";
+  //       input.style.color = "#78787b;";
+  //       label.style.color = "#78787b;";
+  //     }
+  //   });
+  // });
