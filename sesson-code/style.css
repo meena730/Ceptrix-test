@@ -1,0 +1,50 @@
+
+    
+    /* .wp-block-group hero-cta d-inline-block{
+        display: none !important
+        ;
+    }
+    .wp-block-group__inner-container is-layout-constrained wp-block-group-is-layout-constrained{
+        display: none;
+    } */
+  
+    #greenForm {
+      background: #e6ffe6;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      max-width: 600px;
+      width: 100%;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    #greenForm input {
+      flex: 1;
+      min-width: 240px;
+      padding: 12px;
+      border: 1px solid #8fbc8f;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+    
+    #greenForm button {
+      flex: 0 0 auto;
+      padding: 12px 20px;
+      background-color: #32cd32;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+    
+    #greenForm button:hover {
+      background-color: #28a428;
+    }
+    
