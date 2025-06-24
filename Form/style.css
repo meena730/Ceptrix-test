@@ -25,61 +25,73 @@ body {
 
 .input-group {
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: 1.5rem;
+  transition: all 0.2s ease;
 }
 
 .input-group input {
-  width: 100%;
-  padding: 14px 12px;
-  max-width: 380px;
+  width: 90%;
+  padding: 14px 16px;
+  border: 2px solid #ccc;
+  border-radius: 15px;
   font-size: 16px;
-  border: 2px solid #78787b;
-  border-radius: 30px;
   outline: none;
   background: white;
+  color: #696972;
+  transition: all 0.2s ease;
 }
-/* gray */
+
 .input-group label {
   position: absolute;
   top: 14px;
   left: 16px;
   background: white;
-  color: #78787b;
+  color: #696972;
   transition: 0.2s ease;
   padding: 0 4px;
   pointer-events: none;
 }
 
-.input-group input:focus + label,
-.input-group input:not(:placeholder-shown):valid + label {
+/* Float label */
+.input-group.is-focused label,
+.input-group input:valid + label {
   top: -8px;
   left: 12px;
   font-size: 12px;
   color: rgb(60, 56, 180);
 }
 
-/* blue */
-/* .input-group input:focus  {
-    border: 2px solid rgb(60, 56, 180);
-    color: rgb(60, 56, 180);;
 
-  } */
-
-/* Green (not focused) */
-/* .input-group input.valid-input:not(:focus) {
-  border: 2px solid green;
-  color: green;
-} */
-
-/* green label if valid & not focused */
-/* .input-group input.valid-input:not(:focus) + label {
-  color: green;
-} */
-
-/* Normal state reset */
-.input-group input {
-  transition: all 0.2s ease;
+/* Focused */
+.input-group.is-focused input {
+  border-color: rgb(60, 56, 180);
 }
+
+/* Valid  */
+.input-group.is-valid input  {
+  border-color: green;
+
+}
+
+.input-group.is-valid input + label  {
+  color: rgb(17, 140, 17);
+}
+
+/* Error */
+.input-group.is-error input {
+  border-color: red;
+}
+
+
+.input-group.is-error.is-focused label {
+  color: red !important;
+}
+.error-msg {
+  font-size: 12px;
+  /* color: red; */
+  margin-top: 4px;
+}
+
 
 button {
   width: 100%;
