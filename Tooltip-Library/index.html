@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Popper Tooltip</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 100px;
+        text-align: center;
+      }
+
+      button {
+        padding: 12px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        margin: auto;
+        background-color: green;
+        color: aliceblue;
+      }
+
+      #tooltip {
+        background-color: #333;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 4px;
+        font-size: 14px;
+        max-width: 200px;
+        z-index: 100;
+        visibility: hidden;
+        position: absolute;
+      }
+
+      #tooltip.show {
+        visibility: visible;
+      }
+
+      #arrow,
+      #arrow::before {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background: inherit;
+      }
+
+      #arrow {
+        visibility: hidden;
+      }
+
+      #arrow::before {
+        visibility: visible;
+        content: "";
+        transform: rotate(45deg);
+      }
+
+      #tooltip[data-popper-placement^="top"] > #arrow {
+        bottom: -4px;
+      }
+
+      #tooltip[data-popper-placement^="bottom"] > #arrow {
+        top: -4px;
+      }
+
+      #tooltip[data-popper-placement^="left"] > #arrow {
+        right: -4px;
+      }
+
+      #tooltip[data-popper-placement^="right"] > #arrow {
+        left: -4px;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="tooltip-btn">Hover Plz 👆</button>
+
+    <div id="tooltip" role="tooltip">
+      I am tooltip !
+      <div id="arrow" data-popper-arrow></div>
+    </div>
+
+    <!--Library -->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script>
+      const button = document.getElementById("tooltip-btn");
+      const tooltip = document.getElementById("tooltip");
+
+      // Poppe
+      const popperInstance = Popper.createPopper(button, tooltip, {
+        placement: "top",
+        // placement: 'bottom',
+        placement:'top-start/ bottom-emd',
+        placement: 'right/left',
+        modifiers: [
+          {
+            name: "offset",
+            options: {
+              offset: [0, 8],
+            },
+          },
+       
+          {
+            name: "preventOverflow",
+            options: {
+              // boundary: "viewport",
+            },
+          },
+          {
+            name: "arrow",
+            options: {
+              element: document.getElementById("arrow"),
+            },
+          },
+        ],
+      });
+
+      //                                 hover
+      button.addEventListener("mouseenter", () => {
+        tooltip.classList.add("show");
+        popperInstance.update();
+      });
+
+      //                  mouse leave
+      button.addEventListener("mouseleave", () => {
+        tooltip.classList.remove("show");
+      });
+    </script>
+  </body>
+</html>
