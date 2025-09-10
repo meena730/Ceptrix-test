@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Styled Popper Tooltip</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding: 100px;
+        text-align: center;
+        background: #f2f4f8;
+      }
+
+      button {
+        padding: 14px 24px;
+        font-size: 18px;
+        background-color: #2563eb;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: #1e40af;
+      }
+
+      #tooltip {
+        background-color: #1f2937;
+        color: white;
+        padding: 16px 20px;
+        border-radius: 8px;
+        font-size: 15px;
+        max-width: 260px;
+        z-index: 100;
+        visibility: hidden;
+        position: absolute;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+        text-align: left;
+      }
+
+      #tooltip.show {
+        visibility: visible;
+      }
+
+      #tooltip h4 {
+        margin: 0 0 8px;
+        font-size: 16px;
+        font-weight: 600;
+        color: #60a5fa;
+      }
+
+      #tooltip p {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.4;
+      }
+
+      #arrow,
+      #arrow::before {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: inherit;
+      }
+
+      #arrow {
+        visibility: hidden;
+      }
+
+      #arrow::before {
+        visibility: visible;
+        content: "";
+        transform: rotate(45deg);
+      }
+
+      #tooltip[data-popper-placement^="top"] > #arrow {
+        bottom: -5px;
+      }
+
+      #tooltip[data-popper-placement^="bottom"] > #arrow {
+        top: -5px;
+      }
+
+      #tooltip[data-popper-placement^="left"] > #arrow {
+        right: -5px;
+      }
+
+      #tooltip[data-popper-placement^="right"] > #arrow {
+        left: -5px;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="tooltip-btn">Hover Me to Learn More 📘</button>
+
+    <div id="tooltip" role="tooltip">
+      <h4>Important Tip</h4>
+      <p>This button gives you extra features when clicked. Make sure to explore all available options!</p>
+      <div id="arrow" data-popper-arrow></div>
+    </div>
+
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script>
+      const button = document.getElementById("tooltip-btn");
+      const tooltip = document.getElementById("tooltip");
+
+      const popperInstance = Popper.createPopper(button, tooltip, {
+        placement: "top",
+        modifiers: [
+          {
+            name: "offset",
+            options: {
+              offset: [0, 12],
+            },
+          },
+          {
+            name: "preventOverflow",
+            options: {
+              boundary: "viewport",
+            },
+          },
+          {
+            name: "arrow",
+            options: {
+              element: document.getElementById("arrow"),
+            },
+          },
+        ],
+      });
+
+      button.addEventListener("mouseenter", () => {
+        tooltip.classList.add("show");
+        popperInstance.update();
+      });
+
+      button.addEventListener("mouseleave", () => {
+        tooltip.classList.remove("show");
+      });
+    </script>
+  </body>
+</html>

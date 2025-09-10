@@ -18,7 +18,7 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
   input.addEventListener("blur", () => validateField(input));
 });
 
-// Focus effect (blue highlight)
+// Focus -blue  color
 const inputs = document.querySelectorAll(".input-group input");
 inputs.forEach((input) => {
   input.addEventListener("focus", () => {
